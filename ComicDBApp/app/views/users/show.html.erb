@@ -1,0 +1,32 @@
+<h2><%= @user.name %></h2>
+<p>Comic Count: <%= @user.comics.count %>
+
+<ul>
+	<% @comics.each do |comic| %>
+	<li><%= link_to comic.name user_comic_path( comic )%> (<%= comic.year %>)</li>
+	<% end %>
+</ul>
+
+
+<h4>Add Comics:</h4>
+<%= form_for [@user, @comic] do |f| %>
+   <%= f.label :name %>
+   <%= f.text_field :name %>
+
+   <%= f.label :writer %>
+   <%= f.text_field :writer %>
+
+   <%= f.label :artist %>
+   <%= f.text_field :artist %>
+
+   <%= f.label :year %>
+   <%= f.text_field :year %>
+
+	<%= f.label :img_url %>
+	<%= f.text_field :img_url %>
+
+	<%= f.label :company %>
+	<%= f.text_field :company %>
+
+   <%= f.submit 'Submit', id: 'submit' %>
+ <% end %>

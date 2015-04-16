@@ -1,0 +1,8 @@
+<h2><%= @company.name %></h2>
+<h4>Founded: <%= @company.date_founded %></h4>
+<h3>Comics:</h3>
+<ul>
+	<% @comics.each do |comic| %>
+	<li><%= link_to comic.name company_comic_path( comic )%></li>
+	<% end %>
+</ul>
