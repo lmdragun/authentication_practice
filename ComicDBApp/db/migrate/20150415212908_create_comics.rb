@@ -6,9 +6,8 @@ class CreateComics < ActiveRecord::Migration
       t.string :artist
       t.integer :year
       t.string :img_url
+      t.string :company
       t.timestamps
-      t.references :company
-      t.integer :company_id
       t.references :user
       t.integer :user_id
     end

@@ -14,18 +14,15 @@ class ComicsController < ApplicationController
 	end
 
 	def create
-		# @found_company = Company.all(:select => "DISTINCT(params[:name])")
-		@user = @current_user
-		@company = Company.find_by(name: params[:comic][:company])
-		# @comic = @user.comics.new(comic_params, company: @found_company, company_id: @found_company.id)
-		@comic = @company.comics.new(comic_params)
+		@user = User.find( params[:id] )
+		@comic = @user.comics.new(comic_params)
 		@comic.user = @user
 
-		# if @comic.save
-		# 	redirect_to
-		# else
-		# 	render :new
-		# end
+		if @comic.save
+			redirect_to @comic
+		else
+			render :new
+		end
 	end
 
 
